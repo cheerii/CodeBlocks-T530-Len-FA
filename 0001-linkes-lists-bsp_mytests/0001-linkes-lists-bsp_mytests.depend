@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1481637508 source:/home/db/git-code-blocks-t530-len/0001-linkes-lists-bsp_mytests/main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+
