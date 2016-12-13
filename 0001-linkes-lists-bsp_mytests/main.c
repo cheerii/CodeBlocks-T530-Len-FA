@@ -11,9 +11,9 @@ struct node
 int main()
 {
         struct node *start = (struct node1 *) malloc(sizeof(node1));
-        struct node *tmp = (struct node1 *) malloc(sizeof(node1));;// = (struct node1 *)malloc(sizeof(node1));
-        tmp->data=NULL;
-        tmp->next=NULL;
+        //struct node *tmp = (struct node1 *) malloc(sizeof(node1));;// = (struct node1 *)malloc(sizeof(node1));
+//        tmp->data=NULL;
+//        tmp->next=NULL;
 
         //printf("sizeof start: %d", sizeof(start));
         //temp = start;
@@ -22,7 +22,7 @@ int main()
         while(1)
         {
                 int query;
-                printf("1.Insert\n");
+                printf("\n\n1.Insert\n");
                 printf("2.Print\n");
                 printf("3.QUIT\n");
                 printf("Enter your choice:\n");
@@ -52,7 +52,14 @@ int main()
 
                         printf("Entering ELSE IF\n\n");
 
-                        tmp = start;
+                        struct node *tmp2 = (struct node1 *) malloc(sizeof(node1)); //es muss hier definiert sein, denn es braucht immer eine andere Speicheradresse, wenn ich es global configuriere, dann wurde es immer die gleiche haben
+                        struct node *tmp = (struct node1 *) malloc(sizeof(node1)); //es muss hier definiert sein, denn es braucht immer eine andere Speicheradresse, wenn ich es global configuriere, dann wurde es immer die gleiche haben
+                        tmp->data=NULL;
+                        tmp->next=NULL;
+
+                        tmp->data=data;
+
+                        tmp2=start;
 
 //                        printf("tmp %x\n\n", tmp);
 //
@@ -61,30 +68,37 @@ int main()
 //                        printf("zwisch->data %d\n\n", zwisch->data);
 //                        printf("zwisch->next %x\n\n", zwisch->next);
 
-                        while(tmp != NULL)
+                        while(tmp2->next != NULL)
                         {
-                                printf("WHILE %x\n\n", tmp->data);
-//                                sleep(9);
-                                tmp=tmp->next; //Die Adresse vom aktuellen Objekt (start->next) wird in start gespeichert
+                                printf("WHILE %d\n\n", tmp2->data);
+                                sleep(2);
+                                tmp2=tmp2->next; //Die Adresse vom aktuellen Objekt (start->next) wird in start gespeichert
                                 //temp1=temp1->next;
+                                ;
                         }
 
 //                        temp1tmp->next=temp11;
-                        tmp=tmp->next;
+                        tmp->next=tmp2;
+
+                        printf("\n=============\n");
+                        printf("\nstart %d\n", start);
+                        printf("\nstart->next %d\n", start->next);
+                        printf("\ntmp %d\n", tmp);
+                        printf("\ntmp->next %d\n", tmp->next);
 
 
                         }
 
 
                 }
-                else if(query ==2)
+                else if(query == 2)
                 {
                         printf("The list is as below:\n");
                         struct node *temp002;
                         temp002=start;
                         while(temp002 != NULL)
                         {
-                                printf("%d \t",temp002->data);
+                                printf("%d",temp002->data);
                                 temp002=temp002->next;
                         }
                 }
